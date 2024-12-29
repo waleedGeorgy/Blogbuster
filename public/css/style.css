@@ -1,0 +1,107 @@
+body{
+    text-align: center;
+    background-color: whitesmoke;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    height: auto;
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    display: block;
+    width: 75%;
+    padding: 20px;
+    letter-spacing: 0.8rem;
+    border-radius: 5px;
+    margin: 0;
+    margin-bottom: 20px;
+    color: rgb(30, 30, 30);
+}
+
+#user-form{
+    border: 1px solid gray;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#user-form p{
+    font-size: 0.75rem;
+}
+
+#user-output{
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    background-color: rgb(66, 140, 153);
+    color: whitesmoke;
+    border: 1px solid rgb(48, 97, 105);
+    max-width: 80%;
+}
+
+#post{
+    resize: none;
+    padding: 5px;
+    max-width: 100%;
+}
+
+#post-topic{
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.9rem;
+    float: left;
+    margin-top: 45px;
+}
+
+#post-topic > span {
+    color: rgb(253, 216, 167);
+}
+
+#post-date{
+    text-align: right;
+    font-weight: 500;
+    font-size: 0.8rem;
+    float: right;
+    margin-top: 45px;
+}
+
+#post-username{
+    color: rgb(253, 216, 167);
+    text-decoration: rgb(253, 216, 167) wavy underline;
+    text-underline-position: under;
+}
+
+#post-content{
+    text-align: left;
+    font-weight: 200;
+    font-size: 1.1rem;
+}
+
+#submit-btn{
+    background-color: rgb(66, 140, 153);
+    color: white;
+    border: 0;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.5s;
+    font-weight: 700;
+}
+
+#submit-btn:hover{
+    background-color: rgb(48, 97, 105);
+    cursor: pointer;
+}
+
+footer{
+    margin-top: 40px;
+}
+
+#footer-text{
+    padding: 5px;
+    font-size: 0.7rem;
+    letter-spacing: 0.2rem;
+    border-top: 1px solid gray;
+}

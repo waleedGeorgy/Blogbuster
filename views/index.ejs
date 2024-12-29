@@ -1,0 +1,31 @@
+<%- include("partials/header.ejs"); %>
+
+    <h1>Welcome to Blogbuster</h1>
+    <!-- Form div -->
+    <div id="user-form">
+      <form action="/" method="POST">
+        <label for="username">Name:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="topic">Topic:</label>
+        <input type="text" id="topic" name="topic"><br><br>
+        <textarea maxlength="400" rows="3" cols="50" id="post" name="post" placeholder="What say you?"></textarea><br>
+        <p id="charLimit"></p>
+        <input type="submit" id="submit-btn" value="Submit">
+      </form>
+    </div>
+
+    <!-- Output div -->
+    <div id="user-output">
+      <% if(locals.username && locals.userpost && locals.postDate) { %>
+      <h2>What did <span id="post-username"><%= username %></span> say?</h2>
+      <p id="post-content"><%= userpost %></p>
+      <div id="post-info">
+        <p id="post-topic">Topic: <span><%= usertopic %></span></p>
+        <p id="post-date">Posted on: <%= postDate %></p>
+      </div>
+      <% } else { %>
+      <h2>Enter something above👆</h2>
+      <% } %>
+    </div>
+
+<%- include("partials/footer.ejs"); %>
