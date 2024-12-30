@@ -51,9 +51,10 @@ h1{
 #post-topic{
     text-align: left;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     float: left;
     margin-top: 45px;
+    margin-right: 5px;
 }
 
 #post-topic > span {
@@ -63,9 +64,10 @@ h1{
 #post-date{
     text-align: right;
     font-weight: 500;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     float: right;
     margin-top: 45px;
+    margin-left:5px;
 }
 
 #post-username{

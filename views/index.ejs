@@ -19,10 +19,8 @@
       <% if(locals.username && locals.userpost && locals.postDate) { %>
       <h2>What did <span id="post-username"><%= username %></span> say?</h2>
       <p id="post-content"><%= userpost %></p>
-      <div id="post-info">
-        <p id="post-topic">Topic: <span><%= usertopic %></span></p>
-        <p id="post-date">Posted on: <%= postDate %></p>
-      </div>
+      <p id="post-topic">Topic: <span><%= usertopic %></span></p>
+      <p id="post-date"><b>Posted on:</b> <%= postDate %></p>
       <% } else { %>
       <h2>Enter something above👆</h2>
       <% } %>
