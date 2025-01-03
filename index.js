@@ -16,17 +16,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 var date = moment();
 
+let posts = [];
+let id = 0;
+
 app.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
 app.post("/", (req, res) => {
   var postDate = date.format('YYYY/MM/DD HH:mm:ss');
-  res.render("index.ejs",
-    { username: req.body.username,
-    usertopic: req.body.topic,
-    userpost: req.body.post,
-    postDate: postDate });
+  id++;
+  posts.push({id: id, post:[req.body, postDate]});
+  res.render("index.ejs",{postContent: posts});
 });
 
 app.listen(port, () => {

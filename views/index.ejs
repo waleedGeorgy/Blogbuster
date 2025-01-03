@@ -1,29 +1,39 @@
 <%- include("partials/header.ejs"); %>
-
-    <h1>Welcome to Blogbuster</h1>
-    <!-- Form div -->
-    <div id="user-form">
+<h1>Welcome to BLOGBUSTER</h1>
+<div id="main-container">
+  <!-- Forms section -->
+  <div id="left-section">
+    <div class="user-form">
+      <h2>What's on your mind?</h2>
       <form action="/" method="POST">
         <label for="username">Name:</label>
-        <input type="text" id="username" name="username"><br><br>
+        <input type="text" id="username" name="username" /><br /><br />
         <label for="topic">Topic:</label>
-        <input type="text" id="topic" name="topic"><br><br>
-        <textarea maxlength="400" rows="3" cols="50" id="post" name="post" placeholder="What say you?"></textarea><br>
+        <input type="text" id="topic" name="topic" /><br /><br />
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" /><br /><br />
+        <textarea maxlength="1000" rows="3" cols="50" id="post" name="post" placeholder="What say you?"></textarea><br />
         <p id="charLimit"></p>
-        <input type="submit" id="submit-btn" value="Submit">
+        <input type="submit" id="submit-btn" class="form-btn" value="Submit" />
       </form>
     </div>
-
-    <!-- Output div -->
-    <div id="user-output">
-      <% if(locals.username && locals.userpost && locals.postDate) { %>
-      <h2>What did <span id="post-username"><%= username %></span> say?</h2>
-      <p id="post-content"><%= userpost %></p>
-      <p id="post-topic">Topic: <span><%= usertopic %></span></p>
-      <p id="post-date"><b>Posted on:</b> <%= postDate %></p>
-      <% } else { %>
-      <h2>Enter something above👆</h2>
-      <% } %>
-    </div>
-
+  </div>
+  <!-- Posts section -->
+  <div id="right-section">
+    <% if(locals.postContent) { %>
+      <% postContent.forEach(post => { %>
+        <div class="user-output" id="user-output-<%= post.id %>">
+          <h2>What did <span id="post-username"><%= post.post[0].username %></span> say?</h2>
+          <h5># <%= post.id %></h5>
+          <p id="post-topic">Topic: <span><%= post.post[0].topic %></span></p>
+          <h3><%= post.post[0].subject %></h3>
+          <p id="post-content"><%= post.post[0].post %></p>
+          <p id="post-date"><%= post.post[1] %></p>
+        </div>
+      <% }); %>
+    <% } else { %>
+      <h2>No posts yet</h2>
+    <% } %>
+  </div>
+</div>
 <%- include("partials/footer.ejs"); %>

@@ -1,19 +1,14 @@
 body{
     text-align: center;
     background-color: whitesmoke;
-    margin: 0;
     font-family: 'Courier New', Courier, monospace;
     height: auto;
     margin: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 h1{
     display: block;
-    width: 75%;
+    text-align: center;
     padding: 20px;
     letter-spacing: 0.8rem;
     border-radius: 5px;
@@ -22,23 +17,59 @@ h1{
     color: rgb(30, 30, 30);
 }
 
-#user-form{
+#main-container{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 3fr 7fr;
+    grid-auto-flow: row;
+    justify-items: center;
+    align-items: start;
+    column-gap: 1rem;
+}
+
+.user-form{
     border: 1px solid gray;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
 }
 
-#user-form p{
+.user-form p{
     font-size: 0.8rem;
 }
 
-#user-output{
-    padding: 10px 20px 10px 20px;
+.user-form h2{
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.user-output{
+    padding: 15px;
     border-radius: 10px;
     background-color: rgb(66, 140, 153);
     color: whitesmoke;
-    max-width: 60%;
+    margin-bottom: 1rem;
+}
+
+.user-output h2{
+    margin: 0;
+    font-size: 1.2rem;
+    float: left;
+}
+
+.user-output h3{
+    font-weight: 700;
+    color: whitesmoke;
+    text-decoration: underline;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.user-output h5{
+    margin: 0;
+    font-size: 0.8rem;
+    float: right;
 }
 
 #post{
@@ -51,37 +82,29 @@ h1{
     text-align: left;
     font-weight: 700;
     font-size: 0.9rem;
-    float: left;
+    margin-bottom: 0;
     margin-top: 2rem;
-    margin-right: 5px;
 }
 
-#post-topic > span {
+.user-output span {
     color: rgb(253, 216, 167);
 }
 
 #post-date{
-    text-align: right;
     font-weight: 500;
     font-size: 0.9rem;
-    float: right;
-    margin-top: 2rem;
-    margin-left: 5px;
-}
-
-#post-username{
-    color: rgb(253, 216, 167);
-    text-decoration: rgb(253, 216, 167) wavy underline;
-    text-underline-position: under;
+    margin-bottom: 0;
+    text-align: right;
 }
 
 #post-content{
     text-align: left;
     font-weight: 200;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    line-height: 1.25rem;
 }
 
-#submit-btn{
+.form-btn{
     background-color: rgb(66, 140, 153);
     color: white;
     border: 0;
@@ -91,13 +114,16 @@ h1{
     font-weight: 700;
 }
 
-#submit-btn:hover{
+.form-btn:hover{
     background-color: rgb(48, 97, 105);
     cursor: pointer;
 }
 
 footer{
-    margin-top: 5rem;
+    margin-top: 6rem;
+    max-width: 50%;
+    position: relative;
+    left: 25%;
 }
 
 #footer-text{
