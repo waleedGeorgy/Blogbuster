@@ -17,16 +17,16 @@
         <input type="submit" id="submit-btn" class="form-btn" value="Submit" />
       </form>
     </div>
+    <a href="posts.ejs">👉 All posts</a>
   </div>
   <!-- Links section -->
   <div id="right-section">
-    <% if(locals.postContent) { %>
-      <% postContent.forEach(post => { %>
-        <a href="posts.ejs"><%= post.post[0].subject %></a>
-      <% }); %>
+    <% if(locals.postContent.length === 0) { %>
+        <h3>No Posts Yet</h3>
     <% } else { %>
-    <h2>No posts yet</h2>
-    <% } %>
+      <% postContent.forEach(post => { %>
+        <a href="posts.ejs#user-output-<%= post.id %>"><%= post.post[0].subject %></a>
+    <% })} %>
   </div>
 </div>
 <%- include("partials/footer.ejs"); %>

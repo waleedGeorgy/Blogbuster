@@ -4,9 +4,9 @@
 <div id="posts-section">
   <div id="posts-links">
     <ul>
-      <li id="link-to-main"><a href="../">Return to main</a></li>
+      <li id="link-to-main"><a href="../">Return to main page</a></li>
       <hr />
-      <% if(locals.postContent) { %> <% postContent.forEach(post => { %>
+      <% if(locals.postContent) { %><% postContent.forEach(post => { %>
       <li>
         <a href="#user-output-<%= post.id %>"><%= post.post[0].subject %></a>
       </li>
