@@ -20,7 +20,7 @@ let posts = [];
 let id = 0;
 
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("index.ejs", {postContent: posts});
 });
 
 app.post("/", (req, res) => {

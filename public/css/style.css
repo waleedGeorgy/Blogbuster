@@ -9,22 +9,21 @@ body{
 h1{
     display: block;
     text-align: center;
-    padding: 20px;
+    padding: 3rem;
     letter-spacing: 0.8rem;
-    border-radius: 5px;
     margin: 0;
     margin-bottom: 20px;
-    color: rgb(30, 30, 30);
+    color: rgb(38, 38, 38);
 }
 
 #main-container{
     display: grid;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto;
     grid-template-columns: 3fr 7fr;
     grid-auto-flow: row;
-    justify-items: center;
+    justify-items: stretch;
     align-items: start;
-    column-gap: 1rem;
+    column-gap: 3rem;
 }
 
 .user-form{
@@ -120,7 +119,7 @@ h1{
 }
 
 footer{
-    margin-top: 6rem;
+    margin-top: 10.3rem;
     max-width: 50%;
     position: relative;
     left: 25%;
