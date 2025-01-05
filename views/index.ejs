@@ -1,5 +1,5 @@
 <%- include("partials/header.ejs"); %>
-<h1>Welcome to BLOGBUSTER</h1>
+<h1>Welcome to BLOGBUSTER📔</h1>
 <div id="main-container">
   <!-- Forms section -->
   <div id="left-section">
@@ -18,21 +18,14 @@
       </form>
     </div>
   </div>
-  <!-- Posts section -->
+  <!-- Links section -->
   <div id="right-section">
     <% if(locals.postContent) { %>
       <% postContent.forEach(post => { %>
-        <div class="user-output" id="user-output-<%= post.id %>">
-          <h2>What did <span id="post-username"><%= post.post[0].username %></span> say?</h2>
-          <h5># <%= post.id %></h5>
-          <p id="post-topic">Topic: <span><%= post.post[0].topic %></span></p>
-          <h3><%= post.post[0].subject %></h3>
-          <p id="post-content"><%= post.post[0].post %></p>
-          <p id="post-date"><%= post.post[1] %></p>
-        </div>
+        <a href="posts.ejs"><%= post.post[0].subject %></a>
       <% }); %>
     <% } else { %>
-      <h2>No posts yet</h2>
+    <h2>No posts yet</h2>
     <% } %>
   </div>
 </div>

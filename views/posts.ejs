@@ -1,0 +1,34 @@
+<%- include("partials/header.ejs") %>
+<!-- Posts section -->
+<h2>POSTS</h2>
+<div id="posts-section">
+  <div id="posts-links">
+    <ul>
+      <li id="link-to-main"><a href="../">Return to main</a></li>
+      <hr />
+      <% if(locals.postContent) { %> <% postContent.forEach(post => { %>
+      <li>
+        <a href="#user-output-<%= post.id %>"><%= post.post[0].subject %></a>
+      </li>
+      <% });} %>
+    </ul>
+  </div>
+  <div id="posts-bodies">
+    <% if(locals.postContent) { %> <% postContent.forEach(post => { %>
+    <div class="user-output" id="user-output-<%= post.id %>">
+      <h2>
+        > What did
+        <span id="post-username"><%= post.post[0].username %></span> say?
+      </h2>
+      <h5># <%= post.id %></h5>
+      <p id="post-topic">> Topic: <span><%= post.post[0].topic %></span></p>
+      <h3><%= post.post[0].subject %></h3>
+      <p id="post-content"><%= post.post[0].post %></p>
+      <p id="post-date"><%= post.post[1] %></p>
+    </div>
+    <% }); %> <% } else { %>
+    <h2>No posts yet</h2>
+    <% } %>
+  </div>
+</div>
+<%- include("partials/footer.ejs") %>

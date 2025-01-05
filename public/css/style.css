@@ -1,9 +1,17 @@
+html {
+    scroll-behavior: smooth;
+  }
+
 body{
     text-align: center;
     background-color: whitesmoke;
     font-family: 'Courier New', Courier, monospace;
-    height: auto;
-    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin: 0;
 }
 
 h1{
@@ -16,14 +24,40 @@ h1{
     color: rgb(38, 38, 38);
 }
 
+h2{
+    display: block;
+    margin: 4rem;
+    font-size: 2rem;
+}
+
+a{
+    color:rgb(66, 140, 153);
+    transition: color 0.5s;
+}
+
+a:hover{
+    color:rgb(48, 97, 105);
+}
+
+li{
+    text-align: left;
+    list-style-type: '👉';
+    padding-inline-start: 0.5rem;
+}
+
+li > a{
+    color: rgb(66, 140, 153);
+    text-decoration: none;
+    transition: color 0.5s;
+    font-weight: bold;
+}
+
 #main-container{
     display: grid;
     grid-template-rows: auto;
-    grid-template-columns: 3fr 7fr;
-    grid-auto-flow: row;
-    justify-items: stretch;
+    grid-template-columns: 5fr 5fr;
     align-items: start;
-    column-gap: 3rem;
+    column-gap: 2rem;
 }
 
 .user-form{
@@ -31,6 +65,7 @@ h1{
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
+    background-color: whitesmoke;
 }
 
 .user-form p{
@@ -39,6 +74,7 @@ h1{
 
 .user-form h2{
     margin-top: 0;
+    margin-bottom: 20px;
     font-size: 1.2rem;
 }
 
@@ -50,9 +86,22 @@ h1{
     margin-bottom: 1rem;
 }
 
+.user-output:target {
+    animation: flash-background-color 1.5s;
+}
+
+@keyframes flash-background-color {
+    0% {
+      background-color: orangered;
+    }
+    to {
+      background-color: rgb(66, 140, 153);
+    }
+}  
+
 .user-output h2{
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     float: left;
 }
 
@@ -60,15 +109,51 @@ h1{
     font-weight: 700;
     color: whitesmoke;
     text-decoration: underline;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     text-align: center;
-    margin-top: 0.5rem;
 }
 
 .user-output h5{
     margin: 0;
-    font-size: 0.8rem;
+    margin-left: 1rem;
+    font-size: 0.85rem;
     float: right;
+}
+
+.user-output span {
+    color: rgb(253, 216, 167);
+}
+
+#right-section{
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: left;
+    column-gap: 1rem;
+}
+
+#right-section a{
+    margin: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#right-section a::before{
+    content: url('../images/file.svg');
+    display: inline-block;
+    margin-right: 3px;
+}
+
+#posts-section{
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 5fr;
+    column-gap: 2rem;
+}
+
+#link-to-main{
+    list-style-type: '👈';
+    padding-inline-start: 0.5rem;
 }
 
 #post{
@@ -80,13 +165,9 @@ h1{
 #post-topic{
     text-align: left;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     margin-bottom: 0;
-    margin-top: 2rem;
-}
-
-.user-output span {
-    color: rgb(253, 216, 167);
+    margin-top: 1.8rem;
 }
 
 #post-date{
@@ -109,8 +190,8 @@ h1{
     border: 0;
     padding: 10px;
     border-radius: 5px;
-    transition: background-color 0.5s;
     font-weight: 700;
+    transition: background-color 0.5s;
 }
 
 .form-btn:hover{
@@ -119,15 +200,12 @@ h1{
 }
 
 footer{
-    margin-top: 10.3rem;
-    max-width: 50%;
-    position: relative;
-    left: 25%;
+    margin: 0;
+    margin-top: 10rem;
 }
 
 #footer-text{
-    padding: 5px;
     font-size: 0.7rem;
     letter-spacing: 0.2rem;
-    border-top: 1px solid gray;
+    margin: auto;
 }
