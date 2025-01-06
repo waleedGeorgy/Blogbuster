@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
   var postDate = date.format('YYYY/MM/DD HH:mm:ss');
   id++;
-  posts.push({id: id, post:[req.body, postDate]});
+  posts.push({id: [req.body, postDate]});
   res.render("index.ejs",{postContent: posts});
 });
 
@@ -35,5 +35,5 @@ app.get("/posts.ejs", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Listening to port ${port}`);
+  console.log(`Server listening to port ${port}`);
 });

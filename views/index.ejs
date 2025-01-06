@@ -24,9 +24,9 @@
     <% if(locals.postContent.length === 0) { %>
         <h3>No Posts Yet</h3>
     <% } else { %>
-      <% postContent.forEach(post => { %>
-        <a href="posts.ejs#user-output-<%= post.id %>"><%= post.post[0].subject %></a>
-    <% })} %>
+      <% for (var i=0; i<postContent.length; i++) { %>
+        <a href="posts.ejs#user-output-<%= Object.keys(postContent)[i] %>"><%= postContent[i].id[0].subject %></a>
+    <% }} %>
   </div>
 </div>
 <%- include("partials/footer.ejs"); %>

@@ -1,33 +1,33 @@
 <%- include("partials/header.ejs") %>
-<!-- Posts section -->
 <h2>POSTS</h2>
+<!-- Links -->
 <div id="posts-section">
   <div id="posts-links">
     <ul>
-      <li id="link-to-main"><a href="../">Return to main page</a></li>
+      <li id="link-to-main"><a href="/">Return home</a></li>
       <hr />
-      <% if(locals.postContent) { %><% postContent.forEach(post => { %>
-      <li>
-        <a href="#user-output-<%= post.id %>"><%= post.post[0].subject %></a>
-      </li>
-      <% });} %>
+      <% if(locals.postContent) { for (var i=0; i<postContent.length; i++) { %>
+        <li>
+          <a href="#user-output-<%= Object.keys(postContent)[i] %>"><%= postContent[i].id[0].subject %></a>
+        </li>
+      <% }} %>
     </ul>
   </div>
+  <!-- Posts -->
   <div id="posts-bodies">
-    <% if(locals.postContent) { %> <% postContent.forEach(post => { %>
-    <div class="user-output" id="user-output-<%= post.id %>">
-      <h2>
-        > What did
-        <span id="post-username"><%= post.post[0].username %></span> say?
-      </h2>
-      <h5># <%= post.id %></h5>
-      <p id="post-topic">> Topic: <span><%= post.post[0].topic %></span></p>
-      <h3><%= post.post[0].subject %></h3>
-      <p id="post-content"><%= post.post[0].post %></p>
-      <p id="post-date"><%= post.post[1] %></p>
-    </div>
-    <% }); %> <% } else { %>
-    <h2>No posts yet</h2>
+    <% if(locals.postContent.length !== 0) { for (var i=0; i<postContent.length; i++) { %>
+      <div class="user-output" id="user-output-<%= Object.keys(postContent)[i] %>">
+        <h2>> What did <span id="post-username"><%= postContent[i].id[0].username %></span> say?
+        </h2>
+        <h5>#<%= Object.keys(postContent)[i] %></h5>
+        <p id="post-topic">> Topic: <span><%= postContent[i].id[0].topic %></span></p>
+        <h3><%= postContent[i].id[0].subject %></h3>
+        <p id="post-content"><%= postContent[i].id[0].post %></p>
+        <p id="post-date"><%= postContent[i].id[1] %></p>
+        <button>Delete</button>
+      </div>
+    <% }} else { %>
+      <h2>No posts yet</h2>
     <% } %>
   </div>
 </div>

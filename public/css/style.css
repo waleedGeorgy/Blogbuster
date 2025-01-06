@@ -197,6 +197,12 @@ li > a{
     line-height: 1.25rem;
 }
 
+#posts-bodies h2{
+    margin:0;
+    margin-top: 0.9rem;
+    text-align: right;
+}
+
 .form-btn{
     background-color: rgb(66, 140, 153);
     color: white;
