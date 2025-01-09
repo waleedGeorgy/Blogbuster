@@ -20,18 +20,24 @@ let posts = [];
 let id = 0;
 
 app.get("/", (req, res) => {
-  res.render("index.ejs", {postContent: posts});
+  res.render("index.ejs", {posts: posts});
 });
 
 app.post("/", (req, res) => {
   var postDate = date.format('YYYY/MM/DD HH:mm:ss');
   id++;
-  posts.push({id: [req.body, postDate]});
-  res.render("index.ejs",{postContent: posts});
+  posts.push({id: id,
+              date: postDate,
+              username: req.body.username,
+              topic: req.body.topic,
+              subject: req.body.subject,
+              post: req.body.post});
+  console.log(posts);
+  res.render("index.ejs",{posts: posts});
 });
 
 app.get("/posts.ejs", (req, res) => {
-  res.render("posts.ejs",{postContent: posts});
+  res.render("posts.ejs",{posts: posts});
 });
 
 app.listen(port, () => {

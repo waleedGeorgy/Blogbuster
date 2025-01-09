@@ -21,12 +21,12 @@
   </div>
   <!-- Links section -->
   <div id="right-section">
-    <% if(locals.postContent.length === 0) { %>
+    <% if(locals.posts.length === 0) { %>
         <h3>No Posts Yet</h3>
     <% } else { %>
-      <% for (var i=0; i<postContent.length; i++) { %>
-        <a href="posts.ejs#user-output-<%= Object.keys(postContent)[i] %>"><%= postContent[i].id[0].subject %></a>
-    <% }} %>
+      <% posts.forEach(post => { %>
+         <a href="posts.ejs#user-output-<%= post.id %>"><%= post.subject %></a>
+      <% })} %>
   </div>
 </div>
 <%- include("partials/footer.ejs"); %>
