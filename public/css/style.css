@@ -5,7 +5,9 @@ html {
 body{
     text-align: center;
     background-color: whitesmoke;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Raleway", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -61,15 +63,21 @@ li > a{
 }
 
 .user-form{
-    border: 1px solid gray;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
-    background-color: whitesmoke;
+    background-color: white;
+    -webkit-box-shadow: 8px 13px 42px -16px rgba(28,28,28,1);
+    -moz-box-shadow: 8px 13px 42px -16px rgba(28,28,28,1);
+    box-shadow: 5px 3px 42px -16px rgba(28,28,28,1);
+}
+
+.form-text{
+    min-width: 90%;
 }
 
 .user-form p{
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 
 .user-form h2{
@@ -81,9 +89,12 @@ li > a{
 .user-output{
     padding: 15px;
     border-radius: 10px;
-    background-color: rgb(66, 140, 153);
-    color: whitesmoke;
-    margin-bottom: 1rem;
+    background-color: white;
+    color: black;
+    margin-bottom: 1.5rem;
+    -webkit-box-shadow: 8px 13px 42px -16px rgba(28,28,28,1);
+    -moz-box-shadow: 8px 13px 42px -16px rgba(28,28,28,1);
+    box-shadow: 5px 3px 42px -16px rgba(28,28,28,1);
 }
 
 .user-output:target {
@@ -92,10 +103,10 @@ li > a{
 
 @keyframes flash-background-color {
     0% {
-      background-color: orangered;
+      background-color: rgb(66, 140, 153);
     }
     to {
-      background-color: rgb(66, 140, 153);
+      background-color: white;
     }
 }  
 
@@ -107,10 +118,14 @@ li > a{
 
 .user-output h3{
     font-weight: 700;
-    color: whitesmoke;
-    text-decoration: underline;
-    font-size: 1.4rem;
+    color: black;
+    font-size: 2rem;
     text-align: center;
+    transition: color 0.75s;
+}
+
+.user-output h3:hover{
+    color: rgb(66, 140, 153);
 }
 
 .user-output h5{
@@ -121,12 +136,39 @@ li > a{
 }
 
 .user-output span {
-    color: rgb(253, 216, 167);
+    color: rgb(66, 140, 153);
+}
+
+#delete-btn {
+    text-decoration: none;
+    background-color: rgb(255, 57, 57);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 1s;
+}
+
+#delete-btn:hover {
+    background-color: rgb(203, 0, 0);
+}
+
+#edit-btn {
+    text-decoration: none;
+    background-color: rgb(66, 140, 153);
+    color: white;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    transition: background-color 1s;
+}
+
+#edit-btn:hover {
+    background-color: rgb(48, 97, 105);
 }
 
 #left-section a{
     text-decoration: none;
     font-weight: bold;
+    font-size: 1.5rem;
 }
 
 #right-section{
@@ -151,6 +193,7 @@ li > a{
 
 #right-section h3{
     grid-area: 1 / 2 / 1 / 3;
+    margin: 0;
 }
 
 #right-section p{
@@ -180,28 +223,34 @@ li > a{
     font-weight: 700;
     font-size: 0.95rem;
     margin-bottom: 0;
-    margin-top: 1.8rem;
+    margin-top: 2rem;
 }
 
 #post-date{
     font-weight: 500;
     font-size: 0.9rem;
     margin-bottom: 0;
-    text-align: right;
+    text-align: left;
+    margin-top: 0.5rem;
 }
 
 #post-content{
     text-align: left;
-    font-weight: 200;
-    font-size: 1rem;
-    line-height: 1.25rem;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 #posts-bodies h2{
+    float:left;
     margin:0;
-    margin-top: 0.9rem;
     text-align: right;
     margin-right: 2rem;
+}
+
+#posts-bodies h4{
+    text-align: right;
+    margin-right: 5rem;
 }
 
 .form-btn{

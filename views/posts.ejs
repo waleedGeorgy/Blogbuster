@@ -16,16 +16,18 @@
   <div id="posts-bodies">
     <% if(locals.posts.length !== 0) { posts.forEach(post => { %>
       <div class="user-output" id="user-output-<%= post.id %>">
-        <h2>> What did <span id="post-username"><%= post.username %></span> say?</h2>
+        <h2>What did <span id="post-username"><%= post.username %></span> say?</h2>
         <h5>#<%= post.id %></h5>
-        <p id="post-topic">> Topic: <span><%= post.topic %></span></p>
+        <p id="post-topic">Topic: <span><%= post.topic %></span></p>
+        <p id="post-date"><%= post.date %></p>
         <h3><%= post.subject %></h3>
         <p id="post-content"><%= post.post %></p>
-        <p id="post-date"><%= post.date %></p>
+        <a id="edit-btn" href="/posts/edit/<% post.id %>">Edit</a>
+        <a id='delete-btn' href="/posts/delete/<%= post.id %>">Delete</a>
       </div>
     <% }); %>
     <% } else { %>
-      <h2>No posts yet</h2>
+      <h4>No posts yet</h4>
     <% } %>
   </div>
 </div>

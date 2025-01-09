@@ -1,23 +1,20 @@
 <%- include("partials/header.ejs"); %>
-<h1>Welcome to BLOGBUSTER📔</h1>
+<h1>My BLOGBUSTER📔</h1>
 <div id="main-container">
   <!-- Forms section -->
   <div id="left-section">
     <div class="user-form">
-      <h2>What's on your mind?</h2>
+      <h2>Share Your Thoughts</h2>
       <form action="/" method="POST">
-        <label for="username">Name:</label>
-        <input type="text" id="username" name="username" /><br /><br />
-        <label for="topic">Topic:</label>
-        <input type="text" id="topic" name="topic" /><br /><br />
-        <label for="subject">Subject:</label>
-        <input type="text" id="subject" name="subject" /><br /><br />
-        <textarea maxlength="1000" rows="3" cols="50" id="post" name="post" placeholder="What say you?"></textarea><br />
+        <input type="text" class="form-text" id="username" name="username" placeholder="Username" /><br /><br />
+        <input type="text" class="form-text" id="topic" name="topic" placeholder="Topic" /><br /><br />
+        <input type="text" class="form-text" id="subject" name="subject" placeholder="Subject" /><br /><br />
+        <textarea maxlength="1000" rows="7" cols="50" id="post" name="post" placeholder="Post Contents"></textarea><br />
         <p id="charLimit"></p>
         <input type="submit" id="submit-btn" class="form-btn" value="Submit" />
       </form>
     </div>
-    <a href="posts.ejs">👉 All posts</a>
+    <a href="posts">👉 All posts</a>
   </div>
   <!-- Links section -->
   <div id="right-section">
@@ -25,7 +22,7 @@
         <h3>No Posts Yet</h3>
     <% } else { %>
       <% posts.forEach(post => { %>
-         <a href="posts.ejs#user-output-<%= post.id %>"><%= post.subject %></a>
+         <a href="posts#user-output-<%= post.id %>"><%= post.subject %></a>
       <% })} %>
   </div>
 </div>
