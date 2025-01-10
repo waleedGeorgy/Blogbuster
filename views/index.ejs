@@ -6,24 +6,30 @@
     <div class="user-form">
       <h2>Share Your Thoughts</h2>
       <form action="/" method="POST">
-        <input type="text" class="form-text" id="username" name="username" placeholder="Username" /><br /><br />
-        <input type="text" class="form-text" id="topic" name="topic" placeholder="Topic" /><br /><br />
-        <input type="text" class="form-text" id="subject" name="subject" placeholder="Subject" /><br /><br />
-        <textarea maxlength="1000" rows="7" cols="50" id="post" name="post" placeholder="Post Contents"></textarea><br />
+        <label for="username">Username</label>
+        <input type="text" class="form-text-input" id="username" name="username" required /><br /><br />
+        <label for="topic">Topic</label>
+        <input type="text" class="form-text-input" id="topic" name="topic" required /><br /><br />
+        <label for="subject">Subject</label>
+        <input type="text" class="form-text-input" id="subject" name="subject" required /><br /><br />
+        <textarea maxlength="1000" rows="7" cols="50" id="post" name="post" placeholder="Post Contents" required></textarea><br />
         <p id="charLimit"></p>
         <input type="submit" id="submit-btn" class="form-btn" value="Submit" />
       </form>
     </div>
-    <a href="posts">👉 All posts</a>
   </div>
   <!-- Links section -->
   <div id="right-section">
     <% if(locals.posts.length === 0) { %>
         <h3>No Posts Yet</h3>
     <% } else { %>
+      <a id="all-posts-link" href="posts">👉 All posts</a>
+      <h2>Posts:</h2>
+      <ul id="link-list">
       <% posts.forEach(post => { %>
-         <a href="posts#user-output-<%= post.id %>"><%= post.subject %></a>
+         <li><a class="post-link" href="posts#user-output-<%= post.id %>"><%= post.subject %></a></li>
       <% })} %>
+      </ul>
   </div>
 </div>
 <%- include("partials/footer.ejs"); %>

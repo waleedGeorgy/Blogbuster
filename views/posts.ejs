@@ -1,10 +1,10 @@
 <%- include("partials/header.ejs") %>
-<h2>POSTS</h2>
-<!-- Links -->
+<h1>My BLOGBUSTER📔</h1>
 <div id="posts-section">
+  <!-- Links -->
   <div id="posts-links">
     <ul>
-      <li id="link-to-main"><a href="/">Return home</a></li><hr />
+      <li id="link-to-main"><a href="/">Return home</a></li>
       <% if(locals.posts) { posts.forEach(post => { %>
         <li>
           <a href="#user-output-<%= post.id %>"><%= post.subject %></a>
@@ -17,12 +17,11 @@
     <% if(locals.posts.length !== 0) { posts.forEach(post => { %>
       <div class="user-output" id="user-output-<%= post.id %>">
         <h2>What did <span id="post-username"><%= post.username %></span> say?</h2>
-        <h5>#<%= post.id %></h5>
         <p id="post-topic">Topic: <span><%= post.topic %></span></p>
         <p id="post-date"><%= post.date %></p>
         <h3><%= post.subject %></h3>
         <p id="post-content"><%= post.post %></p>
-        <a id="edit-btn" href="/posts/edit/<% post.id %>">Edit</a>
+        <a id="edit-btn" href="/posts/edit/<%= post.id %>">Edit</a>
         <a id='delete-btn' href="/posts/delete/<%= post.id %>">Delete</a>
       </div>
     <% }); %>

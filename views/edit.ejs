@@ -1,0 +1,16 @@
+<%- include("partials/header.ejs"); %>
+    <div class="user-form">
+        <h2 id="edit-post-label">Edit Post #<%= post.id %></h2>
+        <form action="/posts/edit/<%= post.id %>" method="POST">
+          <label for="username">Username</label>
+          <input type="text" value="<%= post.username %>" class="form-text-input" id="updateUsername" name="username" /><br /><br />
+          <label for="topic">Topic</label>
+          <input type="text" value="<%= post.topic %>" class="form-text-input" id="updateTopic" name="topic" /><br /><br />
+          <label for="subject">Subject</label>
+          <input type="text" value="<%= post.subject %>" class="form-text-input" id="updateSubject" name="subject" /><br /><br />
+          <textarea maxlength="1000" rows="10" cols="75" id="updatePost" name="post" placeholder="Post Contents"><%= post.post %></textarea><br />
+          <p id="charLimit"></p>
+          <input type="submit" id="update-btn" class="form-btn" value="Edit" />
+        </form>
+      </div>
+<%- include("partials/footer.ejs") %>
