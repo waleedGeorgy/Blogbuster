@@ -17,7 +17,7 @@
     <% if(locals.posts.length !== 0) { posts.forEach(post => { %>
       <div class="user-output" id="user-output-<%= post.id %>">
         <h2>What did <span id="post-username"><%= post.username %></span> say?</h2>
-        <p id="post-topic">Topic: <span><%= post.topic %></span></p>
+        <p id="post-topic">Topic: <b><span><%= post.topic %></span></b></p>
         <p id="post-date"><%= post.date %></p>
         <h3><%= post.subject %></h3>
         <p id="post-content"><%= post.post %></p>
