@@ -4,6 +4,16 @@ import moment from 'moment';
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import path from "path";
+import pg from "pg";
+
+const db = new pg.Client({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'blogbuster',
+  password: '123456',
+  port: 5432
+});
+db.connect();
 
 const app = express();
 const port = 3000;
@@ -15,68 +25,75 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var date = moment();
-let id = 1;
 
-// GET main page
-app.get("/", (req, res)=>{
-  res.render("index.ejs", {posts: posts});
+// GET main page and READ posts titles
+app.get("/", async(req, res)=>{
+  try {
+    const result = await db.query("SELECT * FROM posts ORDER BY id ASC");
+    res.render("index.ejs", {posts: result.rows});
+  } catch (error) {
+    console.log(error);
+  }
 });
 
-// POST a new post
-app.post("/", (req, res)=>{
-  var postDate = date.format('YYYY/MM/DD HH:mm:ss');
-  id++;
-  posts.push({id: id,
-              date: postDate,
-              username: req.body.username,
-              topic: req.body.topic,
-              subject: req.body.subject,
-              post: req.body.post});
-  res.redirect("/");
+// POST to CREATE a new post
+app.post("/", async(req, res)=>{
+  try {
+    var postDate = date.format('YYYY/MM/DD - HH:mm');
+    await db.query(
+      "INSERT INTO posts (username, subject, topic, post, date) values ($1, $2, $3, $4, $5)",
+      [req.body.username, req.body.subject, req.body.topic, req.body.post, postDate]);
+    res.redirect("/");
+  } catch (error) {
+    console.log(error);
+  }
 });
 
-// GET the posts page
-app.get("/posts", (req, res)=>{
-  res.render("posts.ejs",{posts: posts});
+// GET the posts page and READ all posts
+app.get("/posts", async(req, res)=>{
+  try {
+    const result = await db.query("SELECT * FROM posts ORDER BY id ASC");
+    res.render("posts.ejs", {posts: result.rows});
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 // DELETE a post based on its ID
-app.get("/posts/delete/:id", (req, res)=>{
-  posts = posts.filter((post) => post.id !== parseInt(req.params.id));
-  console.log("Delete ok! Status 200");
-  res.redirect("/posts");
-});
-
-app.get("/posts/edit/:id", (req, res)=>{
-  var postToUpdate = posts.find((post) => post.id === parseInt(req.params.id));
-  res.render("edit.ejs", {post: postToUpdate});
-});
-
-app.post("/posts/edit/:id", (req, res)=>{
-  var postToUpdate = posts.find((post) => post.id === parseInt(req.params.id));
-  if (!postToUpdate) console.log("Update OK!");
-
-  if (req.body.username) postToUpdate.username = req.body.username;
-  if (req.body.subject) postToUpdate.subject = req.body.subject;
-  if (req.body.topic) postToUpdate.topic = req.body.topic;
-  if (req.body.post) postToUpdate.post = req.body.post;
-  postToUpdate.date = date.format('YYYY/MM/DD HH:mm:ss');
-  res.redirect("/posts");
-});
-
-// List of posts
-let posts = [
-  {
-    id: 1,
-    username: "Waleed",
-    subject: "Lorem Ipsum",
-    topic: "Linguistics",
-    post: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    date: date.format('YYYY/MM/DD HH:mm:ss')
+app.get("/posts/delete/:id", async(req, res)=>{
+  try {
+    await db.query("DELETE FROM posts WHERE id = $1", [req.params.id]);
+    console.log("Delete OK!");
+    res.redirect("/posts");
+  } catch (error) {
+    console.log(error);
   }
-];
+});
+
+// GET the edit page for each post based on its ID
+app.get("/posts/edit/:id", async(req, res)=>{
+  try {
+    const result = await db.query("SELECT * FROM posts WHERE id = $1", [req.params.id]);
+    res.render("edit.ejs", {post: result.rows[0]});
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// UPDATE the post
+app.post("/posts/edit/:id", async(req, res)=>{
+  try {
+    await db.query(
+      "UPDATE posts SET username = $1, subject = $2, topic = $3, post = $4 WHERE id = $5",
+      [req.body.username, req.body.subject, req.body.topic, req.body.post, req.params.id]);
+    console.log("Update OK!");
+    res.redirect("/posts");
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 // Connecting the server to the port
 app.listen(port, ()=>{
-  console.log(`Server listening to port ${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });

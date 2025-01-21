@@ -7,7 +7,7 @@
       <h2>Share Your Thoughts</h2>
       <form action="/" method="POST">
         <label for="username">Username</label>
-        <input type="text" class="form-text-input" id="username" name="username" required /><br /><br />
+        <input type="text" class="form-text-input" id="username" name="username" autofocus="true" required /><br /><br />
         <label for="topic">Topic</label>
         <input type="text" class="form-text-input" id="topic" name="topic" required /><br /><br />
         <label for="subject">Subject</label>
@@ -20,7 +20,7 @@
   </div>
   <!-- Links section -->
   <div id="right-section">
-    <% if(locals.posts.length === 0) { %>
+    <% if(locals.posts.length == 0) { %>
         <h3>No Posts Yet</h3>
     <% } else { %>
       <a id="all-posts-link" href="posts">👉 All posts</a>

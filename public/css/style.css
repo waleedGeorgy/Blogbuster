@@ -14,7 +14,7 @@ body{
 
 h1{
     text-align: center;
-    padding: 3rem;
+    padding: 2rem;
     letter-spacing: 0.8rem;
     margin: 0;
     margin-bottom: 2rem;
@@ -57,9 +57,7 @@ li > a{
     border-radius: 10px;
     margin-bottom: 2.5rem;
     background-color: white;
-    -webkit-box-shadow: 5px 3px 42px -16px rgba(28,28,28,1);
-    -moz-box-shadow: 5px 3px 42px -16px rgba(28,28,28,1);
-    box-shadow: 5px 3px 42px -16px rgba(28,28,28,1);
+    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
 .user-form p{
@@ -152,9 +150,7 @@ label{
     background-color: white;
     color: black;
     margin-bottom: 1.5rem;
-    -webkit-box-shadow: 5px 3px 42px -16px rgba(28,28,28,1);
-    -moz-box-shadow: 5px 3px 42px -16px rgba(28,28,28,1);
-    box-shadow: 5px 3px 42px -16px rgba(28,28,28,1);
+    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
 .user-output:target {
@@ -271,11 +267,11 @@ label{
 
 /* ============== EDIT.EJS ============== */
 #edit-post-label{
-    font-size: 2.5rem;
+    font-size: 2.2rem;
 }
 
 #updateUsername{
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-family: "Raleway", serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -283,7 +279,7 @@ label{
 
 #updateTopic{
     padding-right: 2.7rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-family: "Raleway", serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -291,7 +287,7 @@ label{
 
 #updateSubject{
     padding-right: 1.7rem;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-family: "Raleway", serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -300,10 +296,12 @@ label{
 #updatePost{
     resize: none;
     padding: 5px 10px 5px 10px;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-family: "Raleway", serif;
     font-optical-sizing: auto;
     font-style: normal;
+    width: 60%;
+    line-height: 27px;
 }
 
 #update-btn{
@@ -314,12 +312,11 @@ label{
 
 /* FOOTER */
 footer{
-    margin: 0;
-    margin-top: 3.25rem;
-}
-
-#footer-text{
-    font-size: 0.6rem;
-    letter-spacing: 0.2rem;
-    margin: auto;
+    flex: 0 0 auto;
+    color: lightslategray;
+    text-align: left;
+    font-size: 0.55rem;
+    letter-spacing: 0.25rem;
+    position: absolute;
+    bottom :1rem;
 }
